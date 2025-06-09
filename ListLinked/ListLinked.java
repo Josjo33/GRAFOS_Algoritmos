@@ -69,4 +69,32 @@ public class ListLinked<E> implements Iterable<E> {
         }
         return sb.toString();
     }
+
+    // Método size() para contar los elementos en la lista
+    public int size() {
+        int size = 0;
+        Node<E> current = head;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
+    }
+
+    // Agregar el método isEmpty() para verificar si la lista está vacía
+    public boolean isEmpty() {
+        return head == null;  // La lista está vacía si `head` es null
+    }
+
+    // Agregar el método get(int) para obtener un elemento por su índice
+    public E get(int index) {
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        Node<E> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.data;
+    }
 }
